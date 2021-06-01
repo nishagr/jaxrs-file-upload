@@ -1,0 +1,12 @@
+package com.gs.utils;
+
+public class FileAdapter {
+	public FileHandler getFileHandler(String extension, String filePath) {
+		if (extension == null)
+			return null;
+		switch (extension.toLowerCase()) {
+		case "csv":
+			return CSVFileHandler(filePath);
+		}
+	}
+}

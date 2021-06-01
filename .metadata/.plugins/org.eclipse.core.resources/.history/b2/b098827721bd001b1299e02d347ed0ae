@@ -1,0 +1,11 @@
+package com.gupshup.rest.utils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Constants {
+	public static final List<String> usernames = new ArrayList<>(Arrays.asList("admin"));
+	public static final List<String> passwords = new ArrayList<>(Arrays.asList("admin"));
+	
+}

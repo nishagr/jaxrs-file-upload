@@ -1,0 +1,5 @@
+package com.gupshup.utils;
+
+public class Logger {
+
+}

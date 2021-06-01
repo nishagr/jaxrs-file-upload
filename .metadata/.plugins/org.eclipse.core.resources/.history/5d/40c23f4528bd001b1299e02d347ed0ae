@@ -1,0 +1,10 @@
+package com.gupshup.rest;
+
+import javax.ws.rs.Path;
+
+@Path("file")
+public class FileUpload {
+	public String test() {
+		return "It Works";
+	}
+}

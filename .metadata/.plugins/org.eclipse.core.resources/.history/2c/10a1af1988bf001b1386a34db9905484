@@ -1,0 +1,16 @@
+package com.gs.utils;
+
+public class ExcelFileHandler extends FileHandler {
+	
+	private String filePath;
+
+	public ExcelFileHandler(String filePath) {
+		this.filePath = filePath;
+	}
+
+	@Override
+	public void readFile() {
+
+	}
+
+}

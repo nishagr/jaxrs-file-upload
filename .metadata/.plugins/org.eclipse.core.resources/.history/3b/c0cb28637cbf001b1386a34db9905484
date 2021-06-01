@@ -1,0 +1,16 @@
+package com.gs.utils;
+
+public class CSVFileHandler extends FileHandler {
+
+	public CSVFileHandler(String extension) {
+		super(extension);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void readFile(String filePath) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

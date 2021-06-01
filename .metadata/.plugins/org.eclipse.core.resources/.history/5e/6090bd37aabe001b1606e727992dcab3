@@ -1,0 +1,15 @@
+package com.gs.models;
+
+import java.time.LocalDate;
+
+public class Request {
+	
+	private LocalDate createdAt;
+	private String transactionId;
+	private String fileName;
+	private String filePath;
+	private String fileType;
+	
+	
+	
+}

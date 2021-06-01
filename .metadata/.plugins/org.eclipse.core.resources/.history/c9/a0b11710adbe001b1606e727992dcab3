@@ -1,0 +1,5 @@
+package com.gs.api;
+
+public class FileUpload {
+
+}

@@ -1,0 +1,53 @@
+package com.gs.api;
+
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
+import javax.ws.rs.ApplicationPath;
+
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
+import org.glassfish.jersey.server.ResourceConfig;
+
+import com.gs.models.Request;
+import com.gs.utils.FileHandler;
+
+@ApplicationPath("/api")
+public class MainApp extends ResourceConfig {
+
+	private static BlockingQueue<Request> queue;
+//	Where to initialize consumer thread
+	private Thread consumerThread = new Thread(() -> {
+		try {
+			while (true) {
+				Request request = queue.poll();
+				if (request != null) {
+					FileHandler fileHandler = new FileHandler();
+					fileHandler.readFile(request.getFilePath());
+				}
+				int time = 3;
+				System.out.println("Empty Queue, Going to sleep for " + time + " seconds !!");
+				Thread.sleep(time * 1000);
+			}
+
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	});
+
+	public MainApp() {
+		packages("com.gs.api");
+		register(MultiPartFeature.class);
+		queue = new LinkedBlockingQueue<>(10);
+		consumerThread.start();
+	}
+
+	public static void addToQueue(Request request) {
+		try {
+			queue.put(request);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

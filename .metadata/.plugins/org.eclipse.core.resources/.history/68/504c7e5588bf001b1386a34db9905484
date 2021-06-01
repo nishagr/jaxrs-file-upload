@@ -1,0 +1,21 @@
+package com.gs.utils;
+
+import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
+public abstract class FileHandler implements Runnable {
+	
+	private BlockingQueue<List<String>> queue;
+	
+	protected FileHandler() {
+		queue = new LinkedBlockingQueue<>(5);
+	}
+	
+	public void addToQueue(List<String> row) throws InterruptedException {
+		queue.put(row);
+	}
+
+	public abstract void readFile();
+
+}

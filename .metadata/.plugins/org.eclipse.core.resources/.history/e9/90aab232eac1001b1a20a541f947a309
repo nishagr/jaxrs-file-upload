@@ -1,0 +1,31 @@
+package com.gs.utils;
+
+import java.util.List;
+
+public class FileRunner implements Runnable{
+	
+	private FileHandler fileHandler;
+	
+	public FileRunner(FileHandler fileHandler) {
+		this.fileHandler = fileHandler;
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		System.err.println(fileHandler.requestInfo.getFileName() + " Processing Started");
+		while (fileHandler.isActive) {
+			try {
+				List<String> record = fileHandler.queue.take();
+				Thread.sleep(1000);
+				for (String i : record)
+					System.out.print(" | " + i);
+				System.out.println(" |");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		System.err.println(fileHandler.requestInfo.getFileName() + " Processing Finished");
+	}
+
+}

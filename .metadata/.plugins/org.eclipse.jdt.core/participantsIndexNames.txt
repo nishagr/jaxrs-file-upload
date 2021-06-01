@@ -1,0 +1,9 @@
+INDEX VERSION 1.131
+/home/kyra/eclipse-workspace/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2434376663.index
+/rest-normal/src/main/java
+/home/kyra/eclipse-workspace/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/425780134.index
+/NewGenie/src
+/home/kyra/eclipse-workspace/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3945592793.index
+/rest/src/main/java
+/home/kyra/eclipse-workspace/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/864209850.index
+/Genie/src

@@ -1,0 +1,23 @@
+package com.gs.utils;
+
+public class ExcelFileHandler extends FileHandler {
+	
+	private String filePath;
+
+	public ExcelFileHandler(String filePath) {
+		this.filePath = filePath;
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void readFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

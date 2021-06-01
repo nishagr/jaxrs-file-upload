@@ -1,0 +1,18 @@
+package com.gupshup.rest;
+
+import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingDeque;
+
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
+
+@ApplicationPath("/api")
+public class MainApp extends Application {
+	private static ExecutorService executor = Executors.newFixedThreadPool(2);;
+	private static BlockingQueue<List<String>> queue = new LinkedBlockingDeque<>(1);
+	public static boolean isActive = false;
+	private RowConsumer consumer = new RowConsumer(queue);
+}

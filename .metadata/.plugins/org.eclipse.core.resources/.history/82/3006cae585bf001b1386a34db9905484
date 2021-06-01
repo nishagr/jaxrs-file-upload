@@ -1,0 +1,9 @@
+package com.gs.utils;
+
+public abstract class FileHandler {
+	
+	
+
+	public abstract void readFile();
+
+}

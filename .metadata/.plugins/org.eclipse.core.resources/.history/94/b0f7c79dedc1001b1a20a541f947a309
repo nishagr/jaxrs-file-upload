@@ -1,0 +1,35 @@
+package com.gs.utils;
+
+import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
+import com.gs.models.RequestInfo;
+
+public abstract class FileHandler {
+
+	private BlockingQueue<List<String>> queue;
+	protected boolean isActive;
+	protected RequestInfo requestInfo;
+
+	protected FileHandler() {
+		isActive = true;
+		queue = new LinkedBlockingQueue<>(10);
+	}
+
+	public void addToQueue(List<String> row) throws InterruptedException {
+		System.out.println("Adding To Queue");
+		queue.put(row);
+	}
+
+	public List<String> take() throws InterruptedException {
+		return queue.take();
+	}
+
+	public boolean isQueueEmpty() {
+		return queue.isEmpty();
+	}
+
+	public abstract void readFile();
+
+}

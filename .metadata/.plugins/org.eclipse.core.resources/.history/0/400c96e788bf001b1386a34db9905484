@@ -1,0 +1,25 @@
+package com.gs.utils;
+
+import java.util.Arrays;
+
+import com.opencsv.CSVReader;
+
+public class CSVFileHandler extends FileHandler {
+
+	private String filePath;
+
+	public CSVFileHandler(String filePath) {
+		this.filePath = filePath;
+	}
+
+	@Override
+	public void readFile() {
+		CSVReader reader = new CSVReader(new java.io.FileReader(filePath));
+		String[] record = null;
+		while ((record = reader.readNext()) != null) {
+			addToQueue(Arrays.asList(record));
+		}
+		isActive = false;
+	}
+
+}

@@ -1,0 +1,30 @@
+package com.gupshup.api;
+
+import java.util.List;
+import java.util.concurrent.BlockingQueue;
+
+public class RowConsumer implements Runnable {
+
+	private BlockingQueue<List<String>> queue;
+
+	RowConsumer(BlockingQueue<List<String>> queue) {
+		this.queue = queue;
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		while (true) {
+			try {
+				List<String> record = queue.take();
+				for (String i : record)
+					System.out.print(i + "\t\t\t");
+				System.out.println("");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+}

@@ -1,0 +1,14 @@
+package com.gupshup.rest;
+
+import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
+
+@ApplicationPath("/api")
+public class MainApp extends Application {
+	private ExecutorService executor;
+	private BlockingQueue<List<String>> queue;
+}

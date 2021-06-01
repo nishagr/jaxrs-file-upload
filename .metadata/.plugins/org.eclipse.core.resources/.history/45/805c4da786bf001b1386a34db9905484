@@ -1,0 +1,15 @@
+package com.gs.utils;
+
+import java.util.List;
+
+public abstract class FileHandler {
+	
+	private 
+	
+	public void writeRow(List<String> row) {
+		
+	}
+
+	public abstract void readFile();
+
+}

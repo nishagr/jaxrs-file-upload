@@ -1,0 +1,29 @@
+package com.gs.api;
+
+import java.util.List;
+import java.util.concurrent.BlockingQueue;
+
+import com.gs.models.Request;
+
+public class FileConsumer {
+
+	private BlockingQueue<Request> queue;
+
+	FileConsumer(BlockingQueue<Request> queue) {
+		this.queue = queue;
+	}
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		while (true) {
+			try {
+				Request request = queue.take();
+				
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+}

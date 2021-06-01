@@ -1,0 +1,36 @@
+package com.gs.utils;
+
+import java.io.IOException;
+import java.util.Arrays;
+
+import com.opencsv.CSVReader;
+
+public class CSVFileHandler extends FileHandler {
+
+	private String filePath;
+
+	public CSVFileHandler(String filePath) {
+		this.filePath = filePath;
+	}
+
+	@Override
+	public void readFile() {
+		CSVReader reader = new CSVReader(new java.io.FileReader(filePath));
+		String[] record = null;
+		try {
+			while ((record = reader.readNext()) != null) {
+
+				addToQueue(Arrays.asList(record));
+
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		isActive = false;
+	}
+
+}

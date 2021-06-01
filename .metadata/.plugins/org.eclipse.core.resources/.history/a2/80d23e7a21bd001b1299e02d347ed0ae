@@ -1,0 +1,37 @@
+package com.gupshup.rest;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.StringTokenizer;
+
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerRequestFilter;
+import javax.ws.rs.core.Response;
+
+import org.glassfish.jersey.internal.util.Base64;
+
+import com.gupshup.rest.utils.Constants;
+
+public class AuthFilter implements ContainerRequestFilter {
+
+	private final String AUTH_HEADER = "Authorization";
+	private final String AUTH_HEADER_PREFIX = "Basic ";
+
+	@Override
+	public void filter(ContainerRequestContext requestContext) throws IOException {
+		List<String> authHeaders = requestContext.getHeaders().get(AUTH_HEADER);
+		if (authHeaders != null && authHeaders.size() > 0) {
+			String token = authHeaders.get(0);
+			token = token.replace(AUTH_HEADER_PREFIX, "");
+			String decodedToken = Base64.decodeAsString(token);
+			StringTokenizer tokenizer = new StringTokenizer(decodedToken, ":");
+			String username = tokenizer.nextToken();
+			String password = tokenizer.nextToken();
+			if (username.equals("admin") && password.equals("admin"))
+				return;
+		}
+		Response unauthorized = Response.status(Response.Status.UNAUTHORIZED).entity("Unauthorised Access").build();
+		requestContext.abortWith(unauthorized);
+	}
+
+}

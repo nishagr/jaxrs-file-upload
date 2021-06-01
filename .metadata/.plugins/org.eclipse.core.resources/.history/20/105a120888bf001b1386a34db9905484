@@ -1,0 +1,21 @@
+package com.gs.utils;
+
+import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
+public abstract class FileHandler {
+	
+	private BlockingQueue<List<String>> queue;
+	
+	protected FileHandler() {
+		queue = new LinkedBlockingQueue<>(5);
+	}
+	
+	public void writeRow(List<String> row) {
+		
+	}
+
+	public abstract void readFile();
+
+}

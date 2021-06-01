@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+/home/kyra/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+1609127809.index
+463850453.index
+1508094212.index
+1069818142.index
+1585427091.index
+3170275097.index
+1289026257.index
+2153962052.index

@@ -1,0 +1,5 @@
+package com.gupshup.rest;
+
+public class CSVFile {
+
+}

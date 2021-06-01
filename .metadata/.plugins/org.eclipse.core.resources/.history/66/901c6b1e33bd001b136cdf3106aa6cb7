@@ -1,0 +1,38 @@
+package com.gupshup.rest;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.InputStream;
+import java.nio.file.Paths;
+
+import javax.annotation.security.RolesAllowed;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+import org.glassfish.jersey.media.multipart.FormDataParam;
+
+@Path("file")
+public class FileUpload {
+
+	
+	@POST
+	@Consumes(MediaType.MULTIPART_FORM_DATA)
+	@RolesAllowed("admin")
+	public Response upload(@FormDataParam("file") InputStream uploadedInputStream,
+			@FormDataParam("file") FormDataContentDisposition fileDetail) {
+		String directoryName = Paths.get("").toAbsolutePath().toString() + "/test-gupshup/";
+		String fileName = fileDetail.getFileName();
+		String filePath = directoryName.concat(fileName);
+		File directory = new File(directoryName);
+		if (!directory.exists())
+			directory.mkdirs();
+//		FileWriter fileWriter = new FileWriter();
+//		fileWriter.writeToFile(uploadedInputStream, filePath);
+		return Response.status(200).entity("Responded").build();
+				
+	}
+}

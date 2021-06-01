@@ -1,0 +1,40 @@
+package com.gs.utils;
+
+import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
+public abstract class FileHandler implements Runnable {
+
+	private BlockingQueue<List<String>> queue;
+	protected boolean isActive;
+	protected String filePath;
+
+	protected FileHandler() {
+		isActive = true;
+		queue = new LinkedBlockingQueue<>(5);
+	}
+
+	public void addToQueue(List<String> row) throws InterruptedException {
+		queue.put(row);
+	}
+
+	@Override
+	public void run() {
+		System.out.println(filePath + " Processing Started");
+		while (isActive) {
+			try {
+				List<String> record = queue.take();
+				for (String i : record)
+					System.out.print(" | " + i);
+				System.out.println(" |");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println(filePath + " Processing Finished");
+	}
+
+	public abstract void readFile();
+
+}

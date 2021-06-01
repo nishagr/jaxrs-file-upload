@@ -1,0 +1,17 @@
+package com.gs.utils;
+
+public class CSVFileHandler extends FileHandler {
+
+	private String filePath;
+
+	public CSVFileHandler(String filePath) {
+		this.filePath = filePath;
+	}
+
+	@Override
+	public void readFile() {
+		isActive = false;
+
+	}
+
+}
